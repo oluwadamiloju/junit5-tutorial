@@ -1,0 +1,20 @@
+- You can run all the tests in a package by right - clicking and selecting the 'Run Tests in '<package-name''
+
+- To run tests based on tags, edit configurations, delete former ones and select the tag option as the type
+of resource to run and add the tag name.
+      - If you want to disable tests based on a tag name, add the '!' sign before the name.
+      - If you want to run more than one test, add a '&' sign between the tag names
+
+- If you want to run tests with maven, the tests names have to either begin or end with test or tests for the end.
+Hence, you either have to rename all your tests or add a configuration to the Maven Surefire plugin section of your pom.xml
+file
+        <configuration>
+                <includes>**/*Test*.java</includes>
+        </configuration>
+
+- To run the tests, use  select "Execute maven goal" (the big lowercase m) and type `mvn test -Dtest=<name of class>` or
+`mvn test -Dtest=<file path>`.
+        - If it's more than one class, separate them with a comma.
+        - If it's just a particular method, add a #<name of method>
+        - If it's the entire package, use `mvn test -DtestPackage=<package name>`
+        - If it's based on tags, use `mvn test -Dgroups=<tag name>`
